@@ -12,19 +12,12 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<Layout />} />
           <Route index element={<PhoneBox />} />
           <Route path="/add" element={<FormAdd />} />
           <Route path='*' element={<NoMatch />} />
         </Routes>
       </Router>
     </>
-  )
-}
-
-function Layout() {
-  return (
-    <Outlet />
   )
 }
 
