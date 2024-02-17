@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const { faArrowDownZA, faArrowUpAZ, faUserPlus } = require("@fortawesome/free-solid-svg-icons");
 
 
-
 function BtnAsc({ sort, setSort }) {
     return (
         <button className='btnSortAsc' onClick={() => { setSort('desc') }}>
