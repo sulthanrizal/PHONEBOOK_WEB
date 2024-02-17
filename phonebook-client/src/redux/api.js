@@ -12,7 +12,6 @@ export const loadPhonebooks = createAsyncThunk(
     async ({ keyword, sort }) => {
 
         const { data } = await req.get('phonebook', { params: { keyword, sort } });
-        console.log(data, 'ini data')
         return data;
     }
 );
@@ -28,7 +27,6 @@ export const addPhonebooks = createAsyncThunk(
 export const updatePhonebooks = createAsyncThunk(
     'contacts/updatePhonebooks',
     async ({ id, contact }) => {
-        console.log(contact, 'apa ini?')
         const { data } = await req.put(`phonebook/${id}`, contact)
         return data
     }
@@ -50,10 +48,10 @@ export const updateAvatar = createAsyncThunk(
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(data, formData, 'kwkww')
         return data;
     }
 )
+
 export const deletePhonebooks = createAsyncThunk(
     'contacts/deletePhonebooks',
     async ({ id }) => {
