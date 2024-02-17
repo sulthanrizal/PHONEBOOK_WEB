@@ -2,7 +2,6 @@ import { faArrowRotateLeft, faFloppyDisk, faPenToSquare, faTrashCan } from "@for
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import '../App.css';
@@ -13,22 +12,16 @@ export default function PhoneItem({ user }) {
     const [edit, setEdit] = useState(false)
     const [newData, setNewData] = useState({ name: user.name, phone: user.phone })
     const [selectImage, setSelectImage] = useState({})
-
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const inputFile = useRef(null)
 
 
     const imageSet = (e) => {
         if (e.target.files && e.target.files.length > 0) {
-            console.log(e.target.files[0], 'kwkwkw')
             setSelectImage(e.target.files[0])
-            console.log(selectImage, 'img')
-            // console.log(e.target.files)
         }
     };
     const showFileUpload = () => {
-        console.log('mu')
         inputFile.current.click()
     }
     useEffect(() => {
@@ -37,7 +30,6 @@ export default function PhoneItem({ user }) {
             dataNew.append("avatar", selectImage);
             dispatch(updateAvatar({ id: user.id, formData: dataNew }));
         }
-        console.log('jalan')
 
     }, [selectImage]);
     const updateData = (id, contact) => {
