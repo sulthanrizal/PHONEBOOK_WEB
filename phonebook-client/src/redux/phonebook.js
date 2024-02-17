@@ -34,9 +34,7 @@ const contactsSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(loadPhonebooks.fulfilled, (state, action) => {
-                // console.log('ini yang datang dari belakang', action.payload)
                 state = { ...state, ...action.payload, status: 'succeeded' }
-                console.log('ini load', state)
                 return state
             })
             .addCase(loadPhonebooks.rejected, (state, action) => {
@@ -64,7 +62,6 @@ const contactsSlice = createSlice({
                 state.error = action.error;
             })
             .addCase(addPhonebooks.fulfilled, (state, action) => {
-                console.log(state, action.payload)
                 state = {
                     ...state, phonebooks: [
                         {
@@ -73,9 +70,7 @@ const contactsSlice = createSlice({
                             phone: action.payload.phone
                         }, ...state.phonebook.filter(data => data.id !== action.payload.id)], status: 'succeeded'
                 }
-                console.log('ini add', state)
                 return state
-
             })
             .addCase(addPhonebooks.rejected, (state, action) => {
                 state.status = 'failed';
@@ -101,7 +96,6 @@ const contactsSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(loadPage.fulfilled, (state, action) => {
-                console.log('on scroll', current(state), action.payload)
                 state = { ...state, phonebook: [...state.phonebook, ...action.payload.phonebook], status: 'succeeded' }
                 state.page = action.payload.page;
                 state.status = 'succeeded';
@@ -129,8 +123,5 @@ const contactsSlice = createSlice({
 export const selectPhonebooks = (state) => {
     return state.phonebook
 }
-// const currentState = selectPhonebooks(getState())
-
-export const { resetContacts } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
