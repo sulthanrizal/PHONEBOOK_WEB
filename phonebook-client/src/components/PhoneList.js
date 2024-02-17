@@ -7,7 +7,6 @@ import { selectPhonebooks } from "../redux/phonebook";
 export default function PhoneList({ keyword, sort }) {
     const dispatch = useDispatch()
     const { phonebook, page, pages } = useSelector(selectPhonebooks)
-
     const [isLoading, setIsLoading] = useState(false)
 
     const handleScroll = async () => {
@@ -37,18 +36,7 @@ export default function PhoneList({ keyword, sort }) {
     }, [dispatch, pages, page, keyword, sort])
 
     useEffect(() => {
-        const readData = async () => {
-            try {
-                dispatch(loadPhonebooks({ keyword, sort }))
-                console.log('nge LOAD LAGI')
-            } catch (error) {
-                console.log(error)
-
-            } finally {
-                setIsLoading(false)
-            }
-        }
-        readData()
+        dispatch(loadPhonebooks({ keyword, sort }))
     }, [dispatch, keyword, sort])
     return (
         <div className="phonelist" id="main-data">
