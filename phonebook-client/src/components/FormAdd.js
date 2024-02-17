@@ -25,7 +25,6 @@ export default function PhoneAdd() {
                     <button type="submit" >save</button>
                     <Link to={'/'}>cancel</Link>
                 </div>
-
             </div>
         </form >
     )
