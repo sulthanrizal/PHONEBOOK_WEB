@@ -6,6 +6,7 @@ import PhoneList from "./PhoneList";
 export default function PhoneBox() {
     const [keyword, setKeyword] = useState('');
     const [sort, setSort] = useState('asc')
+
     return (
         <div className="container">
             <div className="header">
