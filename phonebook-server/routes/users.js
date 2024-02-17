@@ -6,7 +6,6 @@ const path = require('path')
 const { Op } = require("sequelize")
 
 
-/* GET users listing. */
 router.get('/phonebook', async function (req, res, next) {
   try {
     const { page = 1, limit = 30, keyword = "", sort = 'ASC' } = req.query
